@@ -1,0 +1,187 @@
+/* Navbar Styles */
+
+/* Ensure navbar uses flexbox properly */
+.custom-navbar {
+  background: linear-gradient(to bottom, #eef2ff, #ffffff);
+  padding: 1rem 5%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative; /* Ensure navbar stays at the top */
+  top: 0; /* Stick navbar to top */
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it is above other content */
+  margin: 0; /* Remove any margin */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Ensure navbar creates space when expanded */
+.navbar-expanded {
+  margin-bottom: 250px; /* Adjust height as needed */
+}
+
+/* Adjust the container */
+.container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0; /* Remove extra padding */
+  margin: 0; /* Ensure no margin */
+}
+
+/* Fix logo position */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Push everything else to the right */
+  padding-left: 0; /* Ensure it starts at the left */
+}
+
+/* Resize logo properly */
+.nav-logo {
+  max-height: 80px; /* Set standard height */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Avoid stretching */
+}
+
+/* Adjust search bar to avoid overlapping */
+.search-bar {
+  display: flex;
+  width: 40%;
+  max-width: 400px;
+  transition: width 0.3s ease-in-out; /* Smooth shrinking effect */
+  margin-right: 10px;
+}
+
+/* Auth buttons container */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Mobile Menu Toggle Button */
+.navbar-toggler {
+  border: 1px solid #6c757d;
+  background: transparent;
+  outline: none;
+}
+
+.toggle-icon {
+  color: #6c757d;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth icon transitions */
+}
+
+.navbar-toggler:focus .toggle-icon {
+  color: #0056b3; /* Change color on focus for better visibility */
+}
+
+/* Search Input and Button */
+.search-input {
+  border-color: #6c757d;
+}
+
+.search-button {
+  border-color: #007bff;
+  margin-left: 10px;
+}
+
+/* Navigation Links */
+.custom-nav-link {
+  color: #2c3e50;
+  font-weight: 500;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.custom-nav-link:hover {
+  color: #007bff;
+}
+
+.custom-nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #007bff;
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%);
+}
+
+.custom-nav-link:hover::after {
+  width: 100%;
+}
+
+/* Add focus state for accessibility */
+.custom-nav-link:focus {
+  color: #0056b3;
+  outline: 2px dotted #007bff;
+  outline-offset: 3px; /* Create a clear focus ring */
+}
+
+/* Mobile Responsiveness Fixes */
+@media (max-width: 1024px) {
+  .nav-logo {
+    max-height: 70px; /* Reduce logo size slightly */
+  }
+  .search-bar {
+    width: 35%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-logo {
+    max-height: 60px; /* Further reduce for smaller screens */
+  }
+  .search-bar {
+    width: 30%;
+    max-width: 250px; /* Reduce width on smaller screens */
+  }
+  .navbar-toggler {
+    border: 1px solid #007bff; /* Adjust toggler border */
+  }
+  .custom-navbar {
+    padding: 1rem 10px; /* Ensure proper padding on mobile */
+  }
+  .container-fluid {
+    padding: 0 10px; /* Prevent overflow */
+  }
+  .auth-buttons {
+    flex-direction: column; /* Stack buttons on mobile */
+    gap: 5px;
+  }
+  
+  /* Ensure navbar expands below content */
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo {
+    max-height: 50px; /* Keep it compact on very small screens */
+  }
+  .search-bar {
+    width: 100%; /* Full width on very small screens */
+    max-width: 200px;
+  }
+}
+
+/* Ensure content pushes down when navbar expands */
+.main-content {
+  transition: margin-top 0.3s ease-in-out;
+}
+
+.navbar-expanded .main-content {
+  margin-top: 250px; /* Push content down */
+}

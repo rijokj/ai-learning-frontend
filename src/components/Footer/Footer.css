@@ -1,0 +1,100 @@
+.footer {
+  background: #fff; /* White background */
+  color: #333; /* Darker text for contrast */
+  padding: 40px 0;
+}
+
+.footer-title {
+  font-weight: bold;
+  color: #000; /* Ensure titles are strong */
+}
+
+.footer ul {
+  padding: 0;
+}
+
+.footer ul li {
+  list-style: none;
+  margin-bottom: 8px;
+}
+
+.footer ul li a {
+  color: #555; /* Subtle dark gray */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: #007bff; /* Primary color on hover */
+}
+
+.app-icon {
+  width: 140px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.footer-line {
+  border-top: 1.5px solid #C0C0C0; /* Silver border */
+  margin: 20px 0;
+}
+
+
+.text-muted a {
+  color: #666; /* Soft gray */
+  text-decoration: none; /* Remove underline */
+}
+
+.text-muted a:hover {
+  color: #007bff; /* Primary blue */
+  text-decoration: underline; /* Only on hover */
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #007bff;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px; /* Add space below social icons */
+}
+
+@media (max-width: 768px) {
+  .language-selector {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 20px; /* Push it further down on smaller screens */
+  }
+  .globe-icon{
+    margin-top: 8px;
+  }
+}
+
+
+.globe-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.language-dropdown {
+  background: transparent;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
