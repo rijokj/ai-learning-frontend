@@ -12,17 +12,20 @@ const testimonials = [
 ]
 
 const Signup = () => {
+  const [isLogin, setIsLogin] = useState(false) // Toggle between Signup and Login
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm()
+
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [runningText, setRunningText] = useState(testimonials[0])
 
   const onSubmit = (data) => {
-    console.log('User Data:', data)
+    console.log(`${isLogin ? 'Login' : 'Signup'} Data:`, data)
   }
 
   useEffect(() => {
@@ -56,26 +59,38 @@ const Signup = () => {
         </div>
 
         <div className="signup-box">
-          <h2 className="signup-title">Sign Up</h2>
+          <h2 className="signup-title">{isLogin ? 'Log In' : 'Sign Up'}</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
-            <input
-              type="text"
-              placeholder="First Name"
-              {...register('firstName', { required: 'First Name is required' })}
-              className="signup-input"
-            />
-            {errors.firstName && (
-              <p className="error-message">{errors.firstName.message}</p>
-            )}
+            {!isLogin && (
+              <>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  {...register('firstName', {
+                    required: 'First Name is required',
+                  })}
+                  className={`signup-input ${
+                    errors.firstName ? 'error-input' : ''
+                  }`}
+                />
+                {errors.firstName && (
+                  <p className="error-message">{errors.firstName.message}</p>
+                )}
 
-            <input
-              type="text"
-              placeholder="Last Name"
-              {...register('lastName', { required: 'Last Name is required' })}
-              className="signup-input"
-            />
-            {errors.lastName && (
-              <p className="error-message">{errors.lastName.message}</p>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  {...register('lastName', {
+                    required: 'Last Name is required',
+                  })}
+                  className={`signup-input ${
+                    errors.lastName ? 'error-input' : ''
+                  }`}
+                />
+                {errors.lastName && (
+                  <p className="error-message">{errors.lastName.message}</p>
+                )}
+              </>
             )}
 
             <input
@@ -88,7 +103,7 @@ const Signup = () => {
                   message: 'Invalid email address',
                 },
               })}
-              className="signup-input"
+              className={`signup-input ${errors.email ? 'error-input' : ''}`}
             />
             {errors.email && (
               <p className="error-message">{errors.email.message}</p>
@@ -104,32 +119,40 @@ const Signup = () => {
                   message: 'Password must be at least 6 characters',
                 },
               })}
-              className="signup-input"
+              className={`signup-input ${errors.password ? 'error-input' : ''}`}
             />
             {errors.password && (
               <p className="error-message">{errors.password.message}</p>
             )}
 
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              {...register('confirmPassword', {
-                required: 'Please confirm your password',
-                validate: (value) =>
-                  value === watch('password') || 'Passwords do not match',
-              })}
-              className="signup-input"
-            />
+            {!isLogin && (
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                {...register('confirmPassword', {
+                  required: 'Please confirm your password',
+                  validate: (value) =>
+                    value === watch('password') || 'Passwords do not match',
+                })}
+                className={`signup-input ${
+                  errors.confirmPassword ? 'error-input' : ''
+                }`}
+              />
+            )}
             {errors.confirmPassword && (
               <p className="error-message">{errors.confirmPassword.message}</p>
             )}
 
             <button type="submit" className="signup-button">
-              Sign Up
+              {isLogin ? 'Log In' : 'Sign Up'}
             </button>
           </form>
+
           <p className="login-link">
-            Already a member? <a href="/login">Log in</a>
+            {isLogin ? "Don't have an account?" : 'Already a member?'}{' '}
+            <span onClick={() => setIsLogin(!isLogin)} className="toggle-link">
+              {isLogin ? 'Sign Up' : 'Log in'}
+            </span>
           </p>
         </div>
       </div>

@@ -1,5 +1,16 @@
 /* Signup.css */
 
+
+.toggle-link {
+  color: #007bff; /* Blue color like typical links */
+  cursor: pointer; /* Makes it clear it's clickable */
+  text-decoration: underline; /* Makes it look like a hyperlink */
+}
+
+.toggle-link:hover {
+  color: #0056b3; /* Slightly darker blue on hover */
+}
+
 .signup-page {
   display: flex;
   flex-direction: column;
@@ -91,6 +102,28 @@
   outline: none;
   font-size: 1rem;
 }
+
+/* Error styling for input fields */
+.error-input {
+  border: 1px solid red !important;  /* Apply a red border */
+  background-color: #ffe6e6;  /* Light red background */
+  transition: 0.3s ease-in-out;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+
+/* Highlight input field in red when there's an error */
+.signup-input.error {
+  border: 2px solid red ;
+  background-color: #ffe6e6; /* Light red background */
+}
+
 
 .signup-button {
   padding: 12px;

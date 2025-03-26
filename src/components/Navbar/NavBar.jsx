@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { FaSearch } from 'react-icons/fa'
@@ -10,18 +11,18 @@ const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Courses', href: '#' },
-    { name: 'My Learning', href: '#' },
-    { name: 'Resource', href: '#' },
+    { name: 'Home', path: '/' },
+    { name: 'Courses', path: '/courses' },
+    { name: 'My Learning', path: '/my-learning' },
+    { name: 'Resource', path: '/resource' },
   ]
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
       <div className="container-fluid">
-        <a className="navbar-brand me-3" href="#">
+        <Link className="navbar-brand me-3" to="/">
           <img src={logo} alt="Logo" className="nav-logo" />
-        </a>
+        </Link>
 
         <form
           className="search-bar d-flex"
@@ -62,24 +63,24 @@ const NavBar = () => {
           <ul className="navbar-nav mx-auto text-center">
             {navLinks.map((link, index) => (
               <li className="nav-item" key={index}>
-                <a
+                <Link
                   className="nav-link custom-nav-link"
-                  href={link.href}
-                  aria-current={link.name === 'Home' ? 'page' : undefined} // Example active link indicator
+                  to={link.path}
+                  aria-current={link.name === 'Home' ? 'page' : undefined}
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
           <div className="auth-buttons">
-            <a href="#" className="btn btn-outline-primary me-2">
+            <Link to="/login" className="btn btn-outline-primary me-2">
               Login
-            </a>
-            <a href="#" className="btn btn-primary text-white">
+            </Link>
+            <Link to="/signup" className="btn btn-primary text-white">
               Signup
-            </a>
+            </Link>
           </div>
         </div>
       </div>
