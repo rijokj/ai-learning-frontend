@@ -1,0 +1,27 @@
+.profile-page {
+  display: flex;
+  gap: 10px; /* Reduce the gap between the profile card and certificates area */
+}
+
+.profile-left {
+  flex: 1; /* Make the profile card area larger */
+  max-width: 250px; /* Ensure a consistent size */
+}
+
+.profile-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-right {
+  flex: 2; /* Adjust the width for certificates and courses area */
+}
+
+.certificates-courses {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

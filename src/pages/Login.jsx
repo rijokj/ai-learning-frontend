@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import './Signup.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import logo from '../assets/images/Learni.png'
+
+const API_URL = 'http://localhost:3007/login'
 
 const testimonials = [
   'This platform helped me fix my grammar mistakes in just 2 weeks! 🔥 - Sophia, Student',
@@ -11,21 +15,32 @@ const testimonials = [
 ]
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  })
+  const [formData, setFormData] = useState({ email: '', password: '' })
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [errorMessage, setErrorMessage] = useState('')
   const [runningText, setRunningText] = useState(testimonials[0])
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Login Data:', formData)
+    setLoading(true)
+    setErrorMessage('')
+
+    try {
+      const response = await axios.post(API_URL, formData)
+      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('userId', response.data.userId)
+      navigate('/') // Redirect after successful login
+    } catch (error) {
+      setErrorMessage(error.response?.data?.message || 'Invalid credentials!')
+    } finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -77,8 +92,8 @@ const Login = () => {
               className="signup-input"
             />
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <button type="submit" className="signup-button">
-              Login
+            <button type="submit" className="signup-button" disabled={loading}>
+              {loading ? 'Logging in...' : 'Login'}
             </button>
           </form>
           <p className="login-link">

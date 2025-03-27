@@ -10,6 +10,10 @@ import Footer from './components/Footer/Footer'
 import BannerSection from './components/Banner/BannerSection'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import Home from './pages/Home'
+import ProfileCard from './components/ProfileCard.jsx/ProfileCard'
+import Profile from './pages/Profile'
+import AdminPanel from './pages/admin/AdminPanel'
 
 function Layout() {
   const location = useLocation()
@@ -18,11 +22,13 @@ function Layout() {
 
   return (
     <>
+      {/* <AdminPanel /> */}
       {!hideHeaderFooter && <NavBar />}
       <Routes>
-        <Route path="/" element={<BannerSection />} />
+        <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       {!hideHeaderFooter && <Footer />}
     </>

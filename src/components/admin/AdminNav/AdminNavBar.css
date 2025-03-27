@@ -1,0 +1,68 @@
+/* Navbar Container */
+.admin-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space items properly */
+  padding: 10px 20px;
+  background-color: #343a40; /* Dark background */
+  color: white;
+  height: 60px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Alignment */
+.nav {
+  list-style: none;
+  display: flex; /* Horizontal alignment */
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  margin-left: auto; /* Push navigation items to the right */
+}
+
+.nav-item {
+  margin-left: 20px;
+  position: relative; /* Positioning for dropdown menu */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0; /* Align dropdown to the right */
+  background-color: #495057;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000; /* Stay on top */
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+  background-color: #00bcd4;
+  color: white;
+}
+
+.dropdown-item.text-danger {
+  color: #dc3545;
+}
+
+.dropdown-item.text-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Divider */
+.dropdown-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 5px 0;
+}

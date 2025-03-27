@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import './Signup.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import logo from '../assets/images/Learni.png'
+
+const API_URL = 'http://localhost:3007'
 
 const testimonials = [
   'This platform helped me fix my grammar mistakes in just 2 weeks! 🔥 - Sophia, Student',
@@ -12,7 +16,11 @@ const testimonials = [
 ]
 
 const Signup = () => {
-  const [isLogin, setIsLogin] = useState(false) // Toggle between Signup and Login
+  const [isLogin, setIsLogin] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+  const navigate = useNavigate()
 
   const {
     register,
@@ -24,10 +32,6 @@ const Signup = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [runningText, setRunningText] = useState(testimonials[0])
 
-  const onSubmit = (data) => {
-    console.log(`${isLogin ? 'Login' : 'Signup'} Data:`, data)
-  }
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
@@ -37,6 +41,33 @@ const Signup = () => {
     }, 15000)
     return () => clearInterval(interval)
   }, [currentTestimonial])
+
+  // Handle Signup/Login
+  const onSubmit = async (data) => {
+    setLoading(true)
+    setError('')
+    setSuccess('')
+
+    try {
+      const url = isLogin ? `${API_URL}/login` : `${API_URL}/signup`
+      const response = await axios.post(url, data)
+
+      setSuccess(
+        response.data.message ||
+          (isLogin ? 'Login Successful!' : 'Signup Successful!')
+      )
+
+      if (isLogin && response.data.token) {
+        localStorage.setItem('token', response.data.token)
+        localStorage.setItem('userId', response.data.userId)
+        navigate('/') // Redirect user after login
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || 'Something went wrong!')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="signup-page">
@@ -60,6 +91,9 @@ const Signup = () => {
 
         <div className="signup-box">
           <h2 className="signup-title">{isLogin ? 'Log In' : 'Sign Up'}</h2>
+          {error && <p className="error-message">{error}</p>}
+          {success && <p className="success-message">{success}</p>}
+
           <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
             {!isLogin && (
               <>
@@ -89,6 +123,24 @@ const Signup = () => {
                 />
                 {errors.lastName && (
                   <p className="error-message">{errors.lastName.message}</p>
+                )}
+
+                <input
+                  type="text"
+                  placeholder="Mobile Number"
+                  {...register('mobileNumber', {
+                    required: 'Mobile Number is required',
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message: 'Invalid mobile number. Must be 10 digits.',
+                    },
+                  })}
+                  className={`signup-input ${
+                    errors.mobileNumber ? 'error-input' : ''
+                  }`}
+                />
+                {errors.mobileNumber && (
+                  <p className="error-message">{errors.mobileNumber.message}</p>
                 )}
               </>
             )}
@@ -143,8 +195,8 @@ const Signup = () => {
               <p className="error-message">{errors.confirmPassword.message}</p>
             )}
 
-            <button type="submit" className="signup-button">
-              {isLogin ? 'Log In' : 'Sign Up'}
+            <button type="submit" className="signup-button" disabled={loading}>
+              {loading ? 'Processing...' : isLogin ? 'Log In' : 'Sign Up'}
             </button>
           </form>
 
