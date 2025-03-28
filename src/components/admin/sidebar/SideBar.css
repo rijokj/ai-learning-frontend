@@ -1,97 +1,100 @@
-/* General Sidebar Styles */
+/* Sidebar Base Styles */
 .side-bar {
-  width: 250px; /* Full sidebar width when open */
+  width: 250px;
+  height: 100vh;
   background-color: #343a40;
   color: white;
-  padding: 15px;
-  height: 100vh;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
   position: fixed;
   top: 0;
   left: 0;
-  transition: width 0.3s ease; /* Smooth transition for expanding/collapsing */
-  overflow: hidden;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Closed Sidebar */
 .side-bar.closed {
-  width: 120px; /* Shrink to icon-only width */
+  width: 80px;
 }
 
 /* Logo Section */
 .logo-section {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Divider below logo */
+  padding: 20px 15px;
 }
 
 .logo {
-  max-width: 50px; /* Adjust logo size */
-  max-height: 50px;
-  border-radius: 5px; /* Optional for rounded logo styling */
+  width: 40px;
+  height: 40px;
 }
 
 .logo-text {
-  margin-left: 10px; /* Space between logo and text */
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-/* Hide Logo Text in Collapsed State */
-.side-bar.closed .logo-text {
-  display: none; /* Only show text when the sidebar is open */
+  margin-left: 10px;
 }
 
 /* Toggle Button */
 .toggle-btn {
   position: absolute;
   top: 15px;
-  right: 15px; /* Align inside sidebar */
-  background-color: #495057;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
+  right: 15px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add depth */
-  font-size: 1.5rem; /* Icon size */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.2s ease; /* Hover effect */
-}
-
-.toggle-btn:hover {
-  transform: scale(1.1); /* Slight enlargement on hover */
+  font-size: 24px;
 }
 
 /* Menu Items */
 .menu-item {
-  margin-bottom: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: rgba(255,255,255,0.1);
 }
 
 .menu-header {
   display: flex;
   align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.menu-header:hover {
-  background-color: #495057; /* Hover effect for menu items */
 }
 
 .menu-icon {
-  font-size: 1.5rem;
-  margin-right: 10px; /* Space between icon and text */
+  margin-right: 10px;
+  font-size: 20px;
 }
 
-.side-bar.closed .menu-icon {
-  margin-right: 0; /* Remove spacing in collapsed state */
+.menu-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.side-bar.closed .menu-header span {
-  display: none; /* Hide text labels in collapsed state */
+.dropdown-icon {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* Submenu Styles */
+.submenu {
+  list-style-type: none;
+  background-color: rgba(0,0,0,0.1);
+  margin-top: 10px;
+}
+
+.submenu li {
+  padding: 10px 15px 10px 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submenu li:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* Responsive Adjustments */
+.side-bar.closed .logo-text,
+.side-bar.closed .menu-title-container span,
+.side-bar.closed .submenu {
+  display: none;
 }

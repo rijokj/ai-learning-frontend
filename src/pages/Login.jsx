@@ -33,9 +33,18 @@ const Login = () => {
 
     try {
       const response = await axios.post(API_URL, formData)
-      localStorage.setItem('token', response.data.token)
-      localStorage.setItem('userId', response.data.userId)
-      navigate('/') // Redirect after successful login
+
+      const { token, userId, role } = response.data
+
+      localStorage.setItem('token', token)
+      localStorage.setItem('userId', userId)
+      localStorage.setItem('role', role) // ✅ Store role in localStorage
+
+      if (role === 'admin') {
+        navigate('/admin') // ✅ Redirect to admin panel if admin
+      } else {
+        navigate('/') // ✅ Redirect to normal user dashboard
+      }
     } catch (error) {
       setErrorMessage(error.response?.data?.message || 'Invalid credentials!')
     } finally {

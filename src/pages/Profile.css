@@ -25,3 +25,17 @@
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.profile-page {
+  transition: all 0.3s ease;
+  padding: 20px;
+}
+
+.profile-page.sidebar-open {
+  margin-left: 250px; /* Adjust based on your sidebar width */
+  width: calc(100% - 250px);
+}
+
+.profile-page.sidebar-closed {
+  margin-left: 80px; /* Adjust based on your collapsed sidebar width */
+  width: calc(100% - 80px);
+}

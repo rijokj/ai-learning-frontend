@@ -56,7 +56,7 @@ const Signup = () => {
         response.data.message ||
           (isLogin ? 'Login Successful!' : 'Signup Successful!')
       )
-
+        navigate('/login')
       if (isLogin && response.data.token) {
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('userId', response.data.userId)

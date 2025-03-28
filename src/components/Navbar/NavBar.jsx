@@ -10,12 +10,15 @@ import './NavBar.css'
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userId, setUserId] = useState(null) // Store user ID for profile navigation
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Check for login token in localStorage
+    // Check for login token and user ID in localStorage
     const token = localStorage.getItem('token')
+    const storedUserId = localStorage.getItem('userId')
     setIsLoggedIn(!!token) // Set logged-in status based on token presence
+    setUserId(storedUserId) // Store the user ID if available
   }, [])
 
   const handleLogout = () => {
@@ -120,7 +123,10 @@ const NavBar = () => {
                   aria-labelledby="profileDropdown"
                 >
                   <li>
-                    <Link className="dropdown-item" to="/profile">
+                    <Link
+                      className="dropdown-item"
+                      to={`/profile/${userId}`} // Dynamically navigate to user's profile
+                    >
                       My Profile
                     </Link>
                   </li>

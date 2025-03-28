@@ -1,68 +1,86 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Navbar Container */
 .admin-navbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between; /* Space items properly */
-  padding: 10px 20px;
-  background-color: #343a40; /* Dark background */
+  background-color: #343a40;
   color: white;
+  padding: 10px 20px;
   height: 60px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-/* Navigation Alignment */
-.nav {
-  list-style: none;
-  display: flex; /* Horizontal alignment */
+/* Navbar Left Section */
+.navbar-left {
+  display: flex;
   align-items: center;
-  margin: 0;
-  padding: 0;
-  margin-left: auto; /* Push navigation items to the right */
 }
 
-.nav-item {
-  margin-left: 20px;
-  position: relative; /* Positioning for dropdown menu */
+/* Navbar Right Section */
+.navbar-right {
+  position: relative;
+}
+
+/* Dropdown Trigger */
+.admin-dropdown-trigger {
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
 }
 
 /* Dropdown Menu */
-.dropdown-menu {
+.admin-dropdown-menu {
   position: absolute;
   top: 100%;
-  right: 0; /* Align dropdown to the right */
+  right: 0;
+  width: 200px;
   background-color: #495057;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  margin-top: 10px;
   overflow: hidden;
-  z-index: 1000; /* Stay on top */
 }
 
 /* Dropdown Items */
 .dropdown-item {
   color: white;
   padding: 10px 15px;
-  text-decoration: none;
-  display: block;
-  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-item:hover {
   background-color: #00bcd4;
-  color: white;
 }
 
-.dropdown-item.text-danger {
+/* Logout Item */
+.logout-item {
   color: #dc3545;
 }
 
-.dropdown-item.text-danger:hover {
+.logout-item:hover {
   background-color: #dc3545;
   color: white;
 }
 
-/* Divider */
+/* Dropdown Divider */
 .dropdown-divider {
   height: 1px;
   background-color: rgba(255, 255, 255, 0.2);
   margin: 5px 0;
+}
+
+/* Icons */
+.menu-icon, 
+.logout-icon {
+  margin-right: 8px;
 }

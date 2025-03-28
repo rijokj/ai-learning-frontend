@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './UserList.css'
 
 const UserList = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(null)
+  const dropdownRefs = useRef([]) // Array of refs for each dropdown
+
   const users = [
-    {
-      name: 'Ben John',
-      email: 'bentenjohn3218676@gmail.com',
-      mobile: '9656734478',
-      status: 'Active',
-    },
-    {
-      name: 'Rijo KJ',
-      email: 'rijokj199@gmail.com',
-      mobile: '9846100724',
-      status: 'Active',
-    },
+    { name: 'Ben John', email: 'bentenjohn3218676@gmail.com', mobile: '9656734478', status: 'Active' },
+    { name: 'Rijo KJ', email: 'rijokj199@gmail.com', mobile: '9846100724', status: 'Active' },
   ]
+
+  const toggleDropdown = (index) => {
+    setDropdownOpen(dropdownOpen === index ? null : index)
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownOpen !== null && dropdownRefs.current[dropdownOpen] && !dropdownRefs.current[dropdownOpen].contains(event.target)) {
+        setDropdownOpen(null)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [dropdownOpen])
 
   return (
     <div className="users-list">
@@ -37,8 +47,14 @@ const UserList = () => {
               <td>{user.email}</td>
               <td>{user.mobile}</td>
               <td>{user.status}</td>
-              <td>
-                <button className="action-btn">...</button>
+              <td className="actions-column" ref={(el) => (dropdownRefs.current[index] = el)}>
+                <button className="action-btn" onClick={() => toggleDropdown(index)}>...</button>
+                {dropdownOpen === index && (
+                  <div className="dropdown-menu">
+                    <button className="dropdown-item">Edit</button>
+                    <button className="dropdown-item">Block</button>
+                  </div>
+                )}
               </td>
             </tr>
           ))}
