@@ -1,35 +1,45 @@
 /* Admin Panel Wrapper */
 .admin-panel {
   display: flex;
-  flex-direction: column; /* Add this to stack navbar above content */
+  flex-direction: column;
   height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #2d3645;
+  overflow: hidden;
+  position: absolute;
+  width: 100vw;
 }
 
 /* Sidebar (Dynamic Width) */
-.side-bar {
-  flex-shrink: 0; /* Prevents the sidebar from shrinking */
-  width: 250px; /* Default sidebar width */
-  transition: width 0.3s ease; /* Smooth transition for collapsing */
+.admin-panel .side-bar {
+  flex-shrink: 0;
+  width: 250px;
+  transition: width 0.3s ease;
 }
 
-.side-bar.closed {
-  width: 80px; /* Collapsed sidebar width */
+.admin-panel .side-bar.closed {
+  width: 80px;
 }
 
 /* Main Content Area */
-.content {
-  flex-grow: 1; /* Occupies remaining space */
-  padding: 20px; /* Adds spacing inside the content */
-  background-color: #f8f9fa; /* Light background for better contrast */
-  overflow-y: auto; /* Enable scrolling if content overflows */
-  transition: margin-left 0.3s ease; /* Smooth transition for margin */
+.admin-panel .content {
+  flex-grow: 1;
+  padding: 20px;
+  background: transparent !important;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
 }
 
 /* Adjust Margin for Collapsed Sidebar */
-.content.collapsed {
+.admin-panel .content.collapsed {
   margin-left: 80px;
 }
 
-.content.expanded {
+.admin-panel .content.expanded {
   margin-left: 250px;
+}
+
+.admin-panel .lesson-list-container::before {
+  position: absolute;
 }

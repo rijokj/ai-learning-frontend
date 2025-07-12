@@ -88,10 +88,13 @@ const Profile = ({ isSidebarOpen }) => {
           name={`${profileData.firstName || 'First Name'} ${
             profileData.lastName || 'Last Name'
           }`}
+          firstName={profileData.firstName}
+          lastName={profileData.lastName}
           email={profileData.email || 'Email not available'}
           bio={profileData.bio || 'No bio provided'}
           gender={profileData.gender || 'Not specified'}
           profilePicture={profileData.profilePicture || '/default-image.jpg'} // Provide a default profile picture
+          mobileNumber={profileData.mobileNumber}
           onEdit={() => setIsEditing(true)} // Open modal for editing
           onLogout={handleLogout} // Logout functionality
         />

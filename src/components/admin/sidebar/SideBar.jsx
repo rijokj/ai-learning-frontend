@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import './SideBar.css'
-import { FaHome, FaUser, FaChevronDown, FaChevronRight } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import {
+  FaHome,
+  FaUser,
+  FaBook,
+  FaChevronDown,
+  FaChevronRight,
+} from 'react-icons/fa'
 import { HiOutlineMenuAlt2 } from 'react-icons/hi'
 import logo from '../../../assets/images/Learni.png'
 
@@ -8,10 +15,10 @@ const SideBar = ({ isSidebarOpen, toggleSidebar }) => {
   const [openMenus, setOpenMenus] = useState({
     dashboard: false,
     users: false,
+    courses: false,
   })
 
   const toggleMenu = (menu) => {
-    // Only toggle if sidebar is open
     if (isSidebarOpen) {
       setOpenMenus((prevState) => ({
         ...prevState,
@@ -35,52 +42,68 @@ const SideBar = ({ isSidebarOpen, toggleSidebar }) => {
 
       {/* Sidebar Menu */}
       <ul>
-        {/* Dashboard Menu */}
+        {/* Dashboard */}
         <li className="menu-item" onClick={() => toggleMenu('dashboard')}>
           <div className="menu-header">
             <FaHome className="menu-icon" />
             {isSidebarOpen && (
               <div className="menu-title-container">
                 <span>HOME</span>
-                {isSidebarOpen &&
-                  (openMenus.dashboard ? (
-                    <FaChevronDown className="dropdown-icon" />
-                  ) : (
-                    <FaChevronRight className="dropdown-icon" />
-                  ))}
+                {openMenus.dashboard ? <FaChevronDown /> : <FaChevronRight />}
               </div>
             )}
           </div>
-
-          {/* Dashboard Dropdown */}
           {isSidebarOpen && openMenus.dashboard && (
             <ul className="submenu">
-              <li>Dashboard</li>
+              <li>
+                <Link to="/admin">Dashboard</Link>
+              </li>
             </ul>
           )}
         </li>
 
-        {/* Users Menu */}
+        {/* Users */}
         <li className="menu-item" onClick={() => toggleMenu('users')}>
           <div className="menu-header">
             <FaUser className="menu-icon" />
             {isSidebarOpen && (
               <div className="menu-title-container">
                 <span>Users</span>
-                {isSidebarOpen &&
-                  (openMenus.users ? (
-                    <FaChevronDown className="dropdown-icon" />
-                  ) : (
-                    <FaChevronRight className="dropdown-icon" />
-                  ))}
+                {openMenus.users ? <FaChevronDown /> : <FaChevronRight />}
               </div>
             )}
           </div>
-
-          {/* Users Dropdown */}
           {isSidebarOpen && openMenus.users && (
             <ul className="submenu">
-              <li>User List</li>
+              <li>
+                <Link to="/admin/userlist">UserList</Link>
+              </li>
+            </ul>
+          )}
+        </li>
+
+        {/* Courses */}
+        <li className="menu-item" onClick={() => toggleMenu('courses')}>
+          <div className="menu-header">
+            <FaBook className="menu-icon" />
+            {isSidebarOpen && (
+              <div className="menu-title-container">
+                <span>Courses</span>
+                {openMenus.courses ? <FaChevronDown /> : <FaChevronRight />}
+              </div>
+            )}
+          </div>
+          {isSidebarOpen && openMenus.courses && (
+            <ul className="submenu">
+              <li>
+                <Link to="/admin/courselist">CourseList</Link>
+              </li>
+              <li>
+                <Link to="/admin/lessonlist">LessonList</Link>
+              </li>
+              <li>
+                <Link to="/admin/languagelist">LanguageList</Link>
+              </li>
             </ul>
           )}
         </li>

@@ -9,10 +9,9 @@ const BannerSection = () => {
         <div className="row">
           <div className="col-lg-6 col-md-12">
             <div className="hero-content">
-              <h1>Start your learning journey today</h1>
+              <h1>Start your AI-learning journey today</h1>
               <p>
-                Access thousands of courses taught by industry experts and take your
-                skills to the next level.
+                From Our Best Courses Assigned By AI
               </p>
               <button className="cta-button">Explore Courses</button>
             </div>

@@ -1,0 +1,276 @@
+/* AddLesson Form Container */
+.lesson-form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(30, 41, 59, 0.8); /* Match course-form-container background */
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .lesson-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(148, 163, 184, 0.1) 0%,
+      rgba(71, 85, 105, 0.05) 50%,
+      rgba(148, 163, 184, 0.08) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .lesson-form-container > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Main Title */
+  .lesson-form-container h2.lesson-label {
+    color: #f1f5f9;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Form Groups */
+  .lesson-form-container .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Labels */
+  .lesson-label {
+    color: #f1f5f9;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  /* Input Styling */
+  .lesson-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(148, 163, 184, 0.5); /* Match course-input border */
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1); /* Match course-input background */
+    font-size: 16px;
+    color: #f1f5f9;
+    transition: all 0.3s ease;
+    box-shadow: none;
+  }
+  
+  .lesson-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  }
+  
+  .lesson-input::placeholder {
+    color: rgba(226, 232, 240, 0.5);
+    font-style: italic;
+  }
+  
+  /* Textarea Specific */
+  .lesson-input[as="textarea"],
+  textarea.lesson-input {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+  }
+  
+  /* Select Dropdown */
+  select.lesson-input {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23f1f5f9'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  
+  /* Activities Section */
+  .lesson-form-container h4.lesson-label {
+    font-size: 1.8rem;
+    margin: 2.5rem 0 1.5rem 0;
+    color: #f1f5f9;
+    text-align: center;
+    padding: 1rem;
+    background: rgba(71, 85, 105, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+  }
+  
+  /* Activity Sections */
+  .lesson-activity-section {
+    background: rgba(15, 23, 42, 0.4);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    backdrop-filter: blur(8px);
+  }
+  
+  .lesson-activity-section h5.lesson-label {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #f1f5f9;
+    text-transform: capitalize;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  }
+  
+  /* Activity Input Groups */
+  .lesson-activity-section > div {
+    background: rgba(30, 41, 59, 0.6);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+  }
+  
+  .lesson-activity-section > div:last-of-type {
+    margin-bottom: 1rem;
+  }
+  
+  /* Button Styling */
+  .lesson-submit-btn {
+    background: rgba(99, 102, 241, 0.8);
+    border: none;
+    color: #f1f5f9;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .lesson-submit-btn:hover {
+    background: rgba(99, 102, 241, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+  }
+  
+  .lesson-submit-btn:active {
+    transform: translateY(0);
+  }
+  
+  /* Main Submit Button */
+  .lesson-form-container button[type="submit"].lesson-submit-btn {
+    background: #008080; /* Match course-submit-btn */
+    font-size: 1.1rem;
+    padding: 16px 32px;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  
+  .lesson-form-container button[type="submit"].lesson-submit-btn:hover {
+    background: rgba(99, 102, 241, 0.8);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  }
+  
+  /* Alert Styling */
+  .lesson-form-container .alert {
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+  }
+  
+  .lesson-form-container .alert-success {
+    background: rgba(34, 197, 94, 0.5);
+    color: white;
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+  }
+  
+  .lesson-form-container .alert-danger {
+    background: rgba(239, 68, 68, 0.5);
+    color: white;
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+  }
+  
+  /* No Activities Message */
+  .lesson-activity-section p {
+    color: rgba(226, 232, 240, 0.8);
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+    background: rgba(30, 41, 59, 0.6);
+    border-radius: 8px;
+    border: 1px dashed rgba(148, 163, 184, 0.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .lesson-form-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .lesson-form-container h2.lesson-label {
+      font-size: 2rem;
+    }
+    
+    .lesson-submit-btn {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .lesson-activity-section {
+      padding: 1rem;
+    }
+  }
+  
+  /* Smooth Animations */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .lesson-form-container {
+    animation: slideInUp 0.6s ease-out;
+  }
+  
+  /* Loading State for Buttons */
+  .lesson-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .lesson-submit-btn:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  }

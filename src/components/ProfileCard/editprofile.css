@@ -5,122 +5,115 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
 }
 
 /* Modal Content */
 .modal-content {
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
-  width: 400px;
-  max-width: 90%;
-  animation: fadeIn 0.3s ease-in-out;
+  background: #ffffff;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Title */
-.modal-title {
-  text-align: center;
-  color: #333;
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-/* Form Styles */
-.edit-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* Consistent spacing */
-}
-
-.edit-form .form-group {
+/* Form Styling */
+.modal-content form {
   display: flex;
   flex-direction: column;
 }
 
-/* Labels */
-.edit-form label {
-  font-weight: bold;
-  color: #555;
-  margin-bottom: 5px;
+/* Label styling */
+.modal-content label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Inputs & Selects */
-.edit-form input,
-.edit-form textarea,
-.edit-form select {
+/* Inputs, selects, textareas */
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-/* Focus Effects */
-.edit-form input:focus,
-.edit-form textarea:focus,
-.edit-form select:focus {
-  border-color: #007bff;
-  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Textarea */
-.edit-form textarea {
+/* Textarea Specific */
+.modal-content textarea {
   resize: vertical;
   min-height: 80px;
 }
 
-/* Action Buttons */
+/* Modal Actions (Buttons inside form now) */
 .modal-actions {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
 }
 
-.save-btn,
-.close-btn {
+/* Buttons */
+.modal-content .save-btn,
+.modal-content .close-btn {
   padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: none;
+  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border: none;
+  transition: background-color 0.2s ease;
 }
 
-.save-btn {
+.modal-content .save-btn {
   background-color: #007bff;
   color: white;
 }
 
-.save-btn:hover {
-  background-color: #0056b3;
+.modal-content .save-btn:hover {
+  background-color: #0069d9;
 }
 
-.close-btn {
-  background-color: #ccc;
-  color: #333;
+.modal-content .close-btn {
+  background-color: #dc3545;
+  color: white;
 }
 
-.close-btn:hover {
-  background-color: #999;
+.modal-content .close-btn:hover {
+  background-color: #c82333;
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
+/* Prevent Global Button Override */
+.modal-content button {
+  width: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+    max-height: 90vh;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+
+  .modal-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-content .save-btn,
+  .modal-content .close-btn {
+    width: 100%;
   }
 }

@@ -1,0 +1,380 @@
+/* --- General Container Styling (replaces body) --- */
+.language-list-container {
+    font-family: 'Inter', sans-serif;
+    background-color: #2d334a;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* --- Card Styling (Glassmorphic) --- */
+.language-list-card {
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 24px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    overflow: hidden;
+    position: relative;
+}
+
+.language-list-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(148, 163, 184, 0.1) 0%,
+        rgba(71, 85, 105, 0.05) 50%,
+        rgba(148, 163, 184, 0.08) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* --- Header Section --- */
+.language-list-header {
+    padding: 2rem 2.5rem;
+    background: rgba(71, 85, 105, 0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    background: rgba(99, 102, 241, 0.2);
+    color: #c7d2fe;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+}
+
+.main-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: rgba(226, 232, 240, 0.8);
+    margin: 4px 0 0 0;
+    font-weight: 500;
+}
+
+.add-language-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0; /* Remove padding from button */
+    background: rgba(99, 102, 241, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: 12px;
+    color: #f1f5f9;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.add-language-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+    z-index: 1; /* Ensure this appears above the link */
+    pointer-events: none; /* Ensure this doesn't interfere with clicks */
+}
+
+.add-language-btn:hover::before {
+    left: 100%;
+}
+
+.add-language-btn:hover {
+    background: rgba(99, 102, 241, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+/* Link styling */
+.add-language-link {
+    text-decoration: none !important; /* Force remove underline */
+    color: #f1f5f9 !important; /* Match button text color and override default link color */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem; /* Add padding to the link instead of the button */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2; /* Ensure link is above the ::before element */
+}
+
+/* --- Table Section --- */
+.table-container {
+    padding: 2.5rem;
+    overflow-x: auto;
+}
+
+.table-wrapper {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Improve table layout */
+.languages-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Add fixed layout for better control */
+}
+
+/* Define specific column widths */
+.languages-table th:nth-child(1) { width: 30%; } /* Language name column */
+.languages-table th:nth-child(2) { width: 15%; } /* Code column */
+.languages-table th:nth-child(3) { width: 20%; } /* Flag column */
+.languages-table th:nth-child(4) { width: 35%; } /* Actions column */
+
+.languages-table thead {
+    background: rgba(71, 85, 105, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.languages-table th {
+    padding: 1.25rem 1rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(226, 232, 240, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.languages-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.languages-table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.08);
+    transform: scale(1.01);
+}
+
+.languages-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    color: #f1f5f9;
+    font-size: 0.9rem;
+    font-weight: 500;
+    vertical-align: middle;
+    overflow: hidden; /* Prevent content overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+}
+
+.languages-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.language-name {
+    font-weight: 600;
+    color: #f1f5f9;
+}
+
+.language-code-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    border: 1px solid;
+    background: rgba(107, 114, 128, 0.2);
+    color: #d1d5db;
+    border-color: rgba(107, 114, 128, 0.3);
+}
+
+/* Improve flag image container */
+.languages-table td:nth-child(3) {
+    text-align: center; /* Center flag images */
+}
+
+.flag-image {
+    height: 1.5rem;
+    width: 2.5rem;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    display: inline-block; /* Change to inline-block */
+    vertical-align: middle; /* Align vertically */
+    max-width: 100%; /* Ensure image doesn't exceed cell width */
+}
+
+.actions-cell {
+    text-align: center;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.6);
+    color: #c7d2fe;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background: rgba(99, 102, 241, 0.6);
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    color: #fff;
+}
+        
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    .language-list-container {
+        padding: 1rem;
+    }
+    .language-list-header, .table-container {
+        padding: 1.5rem;
+    }
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .add-language-btn {
+        width: 100%;
+    }
+    .main-title {
+        font-size: 1.5rem;
+    }
+}
+/* Add these to your existing CSS file */
+
+/* Loading Spinner */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+  }
+  
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Error Message */
+  .error-message {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 16px;
+    border-left: 4px solid #ef4444;
+  }
+  
+  /* Empty State */
+  .no-languages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #64748b;
+    font-size: 16px;
+    text-align: center;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin: 16px;
+    border: 1px dashed #cbd5e1;
+  }
+  
+  /* Action Button Hover */
+  .action-btn {
+    transition: background-color 0.2s, transform 0.1s;
+  }
+  
+  .action-btn:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-1px);
+  }
+  
+  .action-btn:active {
+    transform: translateY(0);
+  }
+  
+  /* Responsive Table */
+  @media (max-width: 640px) {
+    .languages-table {
+      font-size: 14px;
+    }
+    
+    .flag-image {
+      width: 30px;
+    }
+    
+    .language-code-badge {
+      padding: 2px 6px;
+    }
+  }

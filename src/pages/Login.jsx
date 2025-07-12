@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom' // Added Link import
 import './Signup.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import { jwtDecode } from 'jwt-decode'
 import logo from '../assets/images/Learni.png'
 
 const API_URL = 'http://localhost:3007/login'
@@ -25,6 +26,25 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    const role = localStorage.getItem('role')
+
+    if (token) {
+      try {
+        const { exp } = jwtDecode(token)
+        if (exp * 1000 > Date.now()) {
+          // Token is valid
+          navigate(role === 'admin' ? '/admin' : '/', { replace: true })
+        } else {
+          localStorage.clear()
+        }
+      } catch {
+        localStorage.clear()
+      }
+    }
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -73,7 +93,7 @@ const Login = () => {
         <div className="hero-section">
           <h1 className="hero-title">Welcome Back!</h1>
           <p className="hero-subtitle">
-            Login to continue your learning journey.
+            Login to continue your Language learning journey.
           </p>
           <div className="testimonial-box">
             <p className="testimonial">{testimonials[currentTestimonial]}</p>
@@ -100,6 +120,10 @@ const Login = () => {
               required
               className="signup-input"
             />
+            {/* Forgot Password Link */}
+            <p className="forgot-password-link">
+              <Link to="/forgot-password">Forgot Password?</Link>
+            </p>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <button type="submit" className="signup-button" disabled={loading}>
               {loading ? 'Logging in...' : 'Login'}

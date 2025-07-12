@@ -1,0 +1,380 @@
+/* AddLanguage Form Container - Glassmorphic Design with CourseForm palette */
+.language-form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: rgba(30, 41, 59, 0.8); /* Match course-form-container background */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 12px; /* Match course-form-container radius */
+    border: 1px solid rgba(148, 163, 184, 0.2); /* Match border color */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Match shadow */
+    position: relative;
+    overflow: hidden;
+}
+  
+.language-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(148, 163, 184, 0.1) 0%,
+        rgba(71, 85, 105, 0.05) 50%,
+        rgba(148, 163, 184, 0.08) 100%
+    ); /* Match gradient pattern */
+    border-radius: 12px;
+    pointer-events: none;
+}
+  
+.language-form-container > * {
+    position: relative;
+    z-index: 1;
+}
+  
+/* Main Title */
+.language-title {
+    color: #f1f5f9; /* Match course text color */
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.5px;
+}
+  
+/* Form Groups */
+.language-form-group {
+    margin-bottom: 1.5rem;
+}
+  
+/* Labels */
+.language-label {
+    display: block;
+    color: #f1f5f9; /* Match course label color */
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+  
+/* Standard Input Field Styling */
+.language-input {
+    width: 100%;
+    height: 42px; /* Reduced standard height for all inputs */
+    padding: 10px 14px;
+    border: 1px solid rgba(148, 163, 184, 0.5); /* Match course-input border */
+    border-radius: 6px; /* Match course-input radius */
+    background: rgba(255, 255, 255, 0.1); /* Match course-input background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #f1f5f9; /* Match text color */
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    outline: none;
+}
+  
+/* Textarea specific styling */
+.language-input.textarea {
+    height: auto;
+    min-height: 96px; /* Standard height for textarea */
+    resize: vertical;
+    padding-top: 12px;
+    font-family: inherit;
+    line-height: 1.5;
+}
+  
+/* Input Focus State */
+.language-input:focus {
+    background: rgba(255, 255, 255, 0.2); /* Match course-input focus background */
+    border: 1px solid rgba(99, 102, 241, 0.5); /* Match focus border color */
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); /* Match focus shadow */
+}
+  
+/* Input Hover State */
+.language-input:hover:not(:focus) {
+    border-color: rgba(148, 163, 184, 0.7);
+    background: rgba(255, 255, 255, 0.15);
+}
+  
+/* Placeholder Styling */
+.language-input::placeholder {
+    color: rgba(226, 232, 240, 0.6);
+    font-style: italic;
+    font-weight: 300;
+}
+  
+/* Autofill Styling */
+.language-input:-webkit-autofill,
+.language-input:-webkit-autofill:hover,
+.language-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px rgba(30, 41, 59, 0.7) inset !important;
+    -webkit-text-fill-color: #f1f5f9 !important;
+    border-color: rgba(148, 163, 184, 0.5) !important;
+}
+
+/* File Upload Button Styling (New) */
+.language-file-upload {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.language-file-upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.language-upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px; /* Match input height */
+    padding: 0 14px;
+    background: rgba(99, 102, 241, 0.2); /* Subtle background matching theme */
+    color: #f1f5f9;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 6px; /* Match input radius */
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.language-upload-btn:hover {
+    background: rgba(99, 102, 241, 0.3);
+}
+
+.language-file-name {
+    flex: 1;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    border-radius: 6px;
+    color: #f1f5f9;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Submit Button - Updated to match course form */
+.language-submit-btn {
+    width: 100%;
+    height: 42px; /* Reduced height to match */
+    background: #008080; /* Match course-submit-btn background */
+    border: none;
+    border-radius: 8px; /* Match course-submit-btn radius */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+  
+.language-submit-btn:hover {
+    background: rgba(99, 102, 241, 0.8); /* Match course-submit-btn hover */
+    transform: scale(1.05); /* Match hover transform */
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4); /* Match hover shadow */
+}
+  
+.language-submit-btn:active {
+    transform: scale(1);
+}
+  
+.language-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+  
+.language-submit-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Secondary Buttons (New) */
+.language-btn-secondary {
+    height: 42px; /* Match main button height */
+    padding: 0 18px;
+    background: rgba(71, 85, 105, 0.3);
+    color: #f1f5f9;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.language-btn-secondary:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Button Icon Styling (New) */
+.language-btn-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+/* Alert Styling */
+.language-alert {
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+  
+.language-alert.success {
+    background: rgba(34, 197, 94, 0.5); /* Match course alert success */
+    color: white;
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+}
+  
+.language-alert.danger {
+    background: rgba(239, 68, 68, 0.5); /* Match course alert danger */
+    color: white;
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+  
+/* Form Animation */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+  
+.language-form-container {
+    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+  
+/* Responsive Design */
+@media (max-width: 768px) {
+    .language-form-container {
+        margin: 1rem;
+        padding: 2rem 1.5rem;
+        max-width: none;
+    }
+    
+    .language-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .language-input {
+        height: 42px;
+        font-size: 0.95rem;
+    }
+    
+    .language-input.textarea {
+        min-height: 88px;
+    }
+    
+    .language-submit-btn {
+        height: 42px;
+        font-size: 1rem;
+    }
+    
+    .language-file-upload {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .language-upload-btn {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    
+    .language-file-name {
+        width: 100%;
+    }
+}
+  
+@media (max-width: 480px) {
+    .language-form-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .language-title {
+        font-size: 1.6rem;
+    }
+    
+    .language-input {
+        height: 40px;
+        padding: 8px 12px;
+    }
+    
+    .language-input.textarea {
+        min-height: 80px;
+    }
+}
+  
+/* Loading State */
+.language-submit-btn.loading {
+    pointer-events: none;
+}
+  
+.language-submit-btn.loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+  
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+  
+/* Focus Ring for Accessibility */
+.language-input:focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.5); /* Match focus color */
+    outline-offset: 2px;
+}
+  
+.language-submit-btn:focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.5); /* Match button color */
+    outline-offset: 2px;
+}

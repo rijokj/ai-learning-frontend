@@ -6,9 +6,11 @@ import {
   FaPinterest,
   FaTiktok,
   FaGlobe,
+  FaApple,
+  FaGooglePlay,
 } from 'react-icons/fa'
 
-import "./Footer.css"
+import './Footer.css'
 
 const Footer = () => {
   return (
@@ -56,24 +58,25 @@ const Footer = () => {
             </ul>
           </div>
 
-         
-
           {/* Column 4 - Mobile Apps */}
           <div className="col-md-3 col-6">
             <h6 className="footer-title">Mobile</h6>
-            <a href="#">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Download_on_the_App_Store_Badge.svg/200px-Download_on_the_App_Store_Badge.svg.png"
-                alt="App Store"
-                className="app-icon"
-              />
+            <a
+              href="#"
+              className="d-flex align-items-center mb-2 app-store-button"
+            >
+              <FaApple className="me-2" />
+              <div>
+                <small className="d-block">Download on the</small>
+                <strong>App Store</strong>
+              </div>
             </a>
-            <a href="#">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/200px-Google_Play_Store_badge_EN.svg.png"
-                alt="Google Play"
-                className="app-icon"
-              />
+            <a href="#" className="d-flex align-items-center app-store-button">
+              <FaGooglePlay className="me-2" />
+              <div>
+                <small className="d-block">Get it on</small>
+                <strong>Google Play</strong>
+              </div>
             </a>
           </div>
         </div>
